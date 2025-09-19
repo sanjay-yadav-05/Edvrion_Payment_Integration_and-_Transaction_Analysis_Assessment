@@ -1,0 +1,29 @@
+{
+  "name": "webhook-service",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon --watch src --exec node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "cors": "^2.8.5",
+    "morgan": "^1.10.0",
+    "mongoose": "^7.5.0",
+    "kafkajs": "^2.2.4",
+    "winston": "^3.10.0",
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

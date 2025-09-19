@@ -1,0 +1,50 @@
+_format_version: "2.1"
+_transform: true
+
+# Consumers (example admin/test consumer) - you can create via Admin API instead
+consumers:
+- username: "frontend-client"
+  tags: ["client", "frontend"]
+
+services:
+- name: auth-service
+  url: "http://host.docker.internal:3000"
+  routes:
+  - name: auth-route
+    paths: ["/api/auth"]
+    strip_path: false
+    methods: ["GET","POST","PUT","DELETE", "OPTIONS"] # Added OPTIONS for preflight requests
+
+- name: payment-service
+  url: "http://host.docker.internal:3001"
+  routes:
+  - name: payments-route
+    paths: ["/api/payments"]
+    strip_path: false
+    methods: ["GET","POST", "OPTIONS"] # Added OPTIONS for preflight requests
+
+- name: webhook-service
+  url: "http://host.docker.internal:3003"
+  routes:
+  - name: webhook-route
+    paths: ["/api/webhook"]
+    strip_path: false
+    methods: ["POST", "OPTIONS"] # Added OPTIONS for preflight requests
+
+- name: transaction-service
+  url: "http://host.docker.internal:3004"
+  routes:
+  - name: transactions-route
+    paths: ["/api/transactions"]
+    strip_path: false
+    methods: ["GET","POST", "OPTIONS"] # Added OPTIONS for preflight requests
+
+plugins:
+  # Global CORS plugin for frontend
+- name: cors
+  config:
+    origins: ["http://localhost:5173"] # Specify your frontend's origin
+    methods: ["GET","POST","PUT","DELETE","OPTIONS"] # Include all methods your frontend uses, plus OPTIONS
+    headers: ["Authorization","Content-Type","X-Requested-With","X-PG-Signature"] # Include headers your frontend sends
+    exposed_headers: ["Authorization"]
+    max_age: 3600
