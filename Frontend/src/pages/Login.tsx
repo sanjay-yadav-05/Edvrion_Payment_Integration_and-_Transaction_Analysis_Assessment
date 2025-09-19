@@ -1,39 +1,43 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, Navigate, useLocation } from 'react-router-dom';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { useAuth } from '@/auth/useAuth';
-import { useAuthContext } from '@/auth/AuthProvider';
-import { AuthResponse } from '@/types/api';
+import { useState, useEffect } from "react";
+import { useNavigate, Navigate, useLocation } from "react-router-dom";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useAuth } from "@/auth/useAuth";
+import { useAuthContext } from "@/auth/AuthProvider";
+import { AuthResponse } from "@/types/api";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { login, isLoggingIn } = useAuth();
   const { isAuthenticated, user } = useAuthContext();
   const location = useLocation();
   const navigate = useNavigate();
 
-
-  const from = location.state?.from?.pathname || '/dashboard';
+  const from = location.state?.from?.pathname || "/dashboard";
 
   useEffect(() => {
-    document.title = 'Login - EDV Payment System';
+    document.title = "Login - EDV Payment System";
   }, []);
 
-
   const getRedirectPath = () => {
-    if (user?.role === 'admin') {
-      return '/admin/transactions';
+    if (user?.role === "admin") {
+      return "/admin/transactions";
     }
     // Fallback for non-admin users or if no specific path is defined
-    return location.state?.from?.pathname || '/dashboard';
+    return location.state?.from?.pathname || "/dashboard";
   };
 
   useEffect(() => {
-    document.title = 'Login - EDV Payment System';
+    document.title = "Login - EDV Payment System";
   }, []);
 
   useEffect(() => {
@@ -42,8 +46,6 @@ export default function Login() {
       navigate(redirectPath, { replace: true });
     }
   }, [isAuthenticated, user, navigate, location.state]);
-
-
 
   // if (isAuthenticated) {
   //   return <Navigate to={from} replace />;
@@ -81,7 +83,9 @@ export default function Login() {
               />
             </svg>
           </div>
-          <CardTitle className="text-2xl font-bold">EDV Payment System</CardTitle>
+          <CardTitle className="text-2xl font-bold">
+            EDV Payment System
+          </CardTitle>
           <CardDescription>Sign in to your account to continue</CardDescription>
         </CardHeader>
         <CardContent>
@@ -119,10 +123,23 @@ export default function Login() {
                   Signing in...
                 </>
               ) : (
-                'Sign In'
+                "Sign In"
               )}
             </Button>
           </form>
+          <div className="mt-6 p-3 rounded-lg bg-muted text-sm">
+    <p className="font-semibold">Demo Credentials:</p>
+    <ul className="mt-2 space-y-1">
+      <li>
+        <span className="font-medium">Student:</span>{" "}
+        <code>shelluser@gmail.com</code> / <code>zxcvbnm</code>
+      </li>
+      <li>
+        <span className="font-medium">Admin:</span>{" "}
+        <code>adminuser@gmail.com</code> / <code>zxcvbnm</code>
+      </li>
+    </ul>
+  </div>
         </CardContent>
       </Card>
     </div>
