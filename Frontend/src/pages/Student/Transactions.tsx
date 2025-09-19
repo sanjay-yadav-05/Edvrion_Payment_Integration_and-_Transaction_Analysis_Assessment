@@ -430,25 +430,31 @@ export default function StudentTransactions() {
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
                         <div className="flex items-center space-x-3 mb-2">
-                          <h3 className="font-semibold">
-                            ₹{transaction.order_amount}
-                          </h3>
                           <Badge className={getStatusColor(transaction.status)}>
                             {transaction.status}
                           </Badge>
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-sm text-muted-foreground">
-                          <div>
+                        <div className="grid grid-cols-1 md:grid-cols-6 gap-2 text-sm text-muted-foreground">
+                          <div className='text-nowrap col-span-2'>
                             <span className="font-medium">Order ID:</span>{' '}
                             {transaction.custom_order_id || transaction.collect_request_id}
+                          </div>
+                          
+                          <div >
+                            <span className="font-medium "> Transaction Amount:</span>{' '}
+                            ₹{transaction.order_amount}
                           </div>
                           <div>
                             <span className="font-medium">Gateway:</span>{' '}
                             <span className="capitalize">{transaction.gateway_name}</span>
                           </div>
                           <div>
-                            <span className="font-medium">Date:</span>{' '}
+                            <span className="font-medium">Payment:</span>{' '}
+                            <span className="capitalize">{transaction?.payment_mode || "NA"}</span>
+                          </div>
+                          <div>
+                            <span className="font-medium col-span-2">Date:</span>{' '}
                             {formatDate(transaction.payment_time)}
                           </div>
                         </div>

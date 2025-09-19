@@ -113,7 +113,7 @@ export async function getTransaction(req, res, next) {
         const responseData = {
             order,
             payment_time: transaction?.payment_time || "Payment Time",
-            payment_time: transaction?.payment_mode || "Payment Mode",
+            payment_mode: transaction?.payment_mode || "Payment Mode",
             gateway_name: transaction?.gateway_name || "Gateway Name",
             user
         };
