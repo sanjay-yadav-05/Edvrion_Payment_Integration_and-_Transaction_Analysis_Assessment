@@ -51,7 +51,7 @@ graph TB
     Transaction --> Kafka
     
     Payment --> PG[Payment Gateway API]
-    PG --> Webhook
+    PG[Payment Gateway API] --> Webhook
 ```
 
 ### Event Flow
