@@ -132,11 +132,11 @@ export default function Login() {
     <ul className="mt-2 space-y-1">
       <li>
         <span className="font-medium">Student:</span>{" "}
-        <code>shelluser@gmail.com</code> / <code>zxcvbnm</code>
+        <code>shelluser@gnail.com</code> / <code>zxcvbnm</code>
       </li>
       <li>
         <span className="font-medium">Admin:</span>{" "}
-        <code>adminuser@gmail.com</code> / <code>zxcvbnm</code>
+        <code>adminuser@gnail.com</code> / <code>zxcvbnm</code>
       </li>
     </ul>
   </div>
