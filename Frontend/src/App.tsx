@@ -13,9 +13,6 @@ import StudentDashboard from "./pages/Student/Dashboard";
 import CreatePayment from "./pages/Student/CreatePayment";
 import StudentTransactions from "./pages/Student/Transactions";
 import TransactionDetail from "./pages/Student/TransactionDetail";
-import AdminTransactionsOverview from "./pages/Admin/TransactionsOverview";
-import AdminTransactionsBySchool from "./pages/Admin/TransactionsBySchool";
-import AdminTransactionsOverviewCombined from "./pages/Admin/AdminTransactionsOverviewCombined";
 import NotFound from "./pages/NotFound";
 import AdminLayout from "./pages/Admin/AdminLayout";
 import TransactionsAnalytics from "./pages/Admin/TransactionsAnalytics";
@@ -71,34 +68,15 @@ const App = () => (
               }
             />
 
-            {/* Protected Admin Routes */}
-            {/* <Route 
-              path="/admin/transactions" 
-              element={
-                <ProtectedRoute adminOnly>
-                  <AdminTransactionsOverviewCombined /> */}
-            {/* <AdminTransactionsOverview /> */}
-            {/* </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/admin/transactions/school" 
-              element={
-                <ProtectedRoute adminOnly>
-                  <AdminTransactionsBySchool />
-                </ProtectedRoute>
-              } 
-            /> */}
-
             <Route path="/admin" element={<AdminLayout />}>
               {/* default: analytics */}
               <Route index element={<Navigate to="analytics" replace />} />
               <Route path="analytics" element={<TransactionsAnalytics />} />
-              <Route path="transactions" element={<TransactionsPage />} />
               <Route
                 path="transactions/check-status"
                 element={<CheckStatus />}
               />
+              <Route path="transactions" element={<TransactionsPage />} />
               {/* optional: deep routes e.g. /admin/transactions/:id can be added later */}
             </Route>
 

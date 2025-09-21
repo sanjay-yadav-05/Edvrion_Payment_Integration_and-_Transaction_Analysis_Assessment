@@ -100,7 +100,7 @@ export async function getTransaction(req, res, next) {
     try {
         const { orderId } = req.params;
         console.log(orderId);
-        const order = await Order.findOne({ collect_request_id: orderId }).lean();
+        const order = await Order.findById(orderId).lean();
         if (!order) return res.status(404).json({ error: 'order not found' });
 
         // const statusHistory = await OrderStatus.find({ collect_request_id: order.collect_request_id }).sort({ processed_at: -1 }).lean();
@@ -154,7 +154,7 @@ export async function getTransactionsBySchool(req, res, next) {
 export async function getByCollectId(req, res, next) {
     try {
         const { collect_request_id } = req.params;
-        const tx = await TransactionView.findOne({ collect_request_id }).lean();
+        const tx = await TransactionView.findOne({ collect_request_id : collect_request_id }).lean();
         if (!tx) return res.status(404).json({ error: 'not found' });
         res.json({ transaction: tx });
     } catch (err) {
