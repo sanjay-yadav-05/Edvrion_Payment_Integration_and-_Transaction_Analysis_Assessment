@@ -94,10 +94,6 @@ cd Edvrion_Payment_Integration_and-_Transaction_Analysis_Assessment
 
 ### 2. Install Dependencies
 ```bash
-# Install dependencies for all services
-./scripts/install-all.sh
-
-# Or manually for each service
 cd services/auth-service && npm install
 cd services/payment-service && npm install
 cd services/transaction-service && npm install
